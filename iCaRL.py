@@ -1,5 +1,6 @@
 from time import time
 
+import iCIFAR10
 import torch.nn as nn
 import torch
 from torchvision import transforms
@@ -104,8 +105,8 @@ class iCaRLmodel:
                                                         transforms.ToTensor(),
                                                     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2434, 0.2615))]) #CIFAR10
 
-            self.train_dataset = iDataset('dataset', transform=self.train_transform, download=True)                       #CIFAR10
-            self.test_dataset = iDataset('dataset', test_transform=self.test_transform, train=False, download=True)
+            self.train_dataset = iCIFAR10('dataset', transform=self.train_transform, download=True)                       #CIFAR10
+            self.test_dataset = iCIFAR10('dataset', test_transform=self.test_transform, train=False, download=True)
             print("CIFAR10 dataset loaded successfully.")
 
         elif dataset == 'MNIST':
