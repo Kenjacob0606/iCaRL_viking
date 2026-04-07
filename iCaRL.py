@@ -11,7 +11,6 @@ import torch.optim as optim
 from iMNIST import iMNIST
 from myNetwork import network
 from iCIFAR100 import iCIFAR100
-from iDataset import iDataset
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt #new
 
