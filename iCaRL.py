@@ -1,6 +1,5 @@
 from time import time
 
-import iCIFAR10
 import torch.nn as nn
 import torch
 from torchvision import transforms
@@ -11,6 +10,7 @@ import torch.optim as optim
 from iMNIST import iMNIST
 from myNetwork import network
 from iCIFAR100 import iCIFAR100
+from iCIFAR10 import iCIFAR10
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt #new
 
