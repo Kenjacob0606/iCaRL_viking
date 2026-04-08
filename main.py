@@ -9,7 +9,7 @@ import time
 #class=1_mem=200_def_2ndtrain
 
 numclass=1#num of classes learned initially, will be updated in incremental learning
-feature_extractor=resnet18_MNIST_cbam() #try other resnets
+feature_extractor=resnet18_cbam() #try other resnets
 img_size=32
 batch_size=128  
 task_size= 1 #num of classes learned each task
