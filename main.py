@@ -22,7 +22,7 @@ dataset='CIFAR100' #try other dataset
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
 
-start_time = time.time(5)
+start_time = time.time()
 for i in range(10): #was 10,5
     # if i==0:
     #     start_time = time.time()
