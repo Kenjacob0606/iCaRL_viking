@@ -8,16 +8,16 @@ import time
 
 #class=1_mem=200_def_2ndtrain
 
-numclass=1#num of classes learned initially, will be updated in incremental learning
+numclass=10#num of classes learned initially, will be updated in incremental learning
 feature_extractor=resnet18_cbam() #try other resnets
 img_size=32
 batch_size=128  
-task_size= 1 #num of classes learned each task
+task_size= 10 #num of classes learned each task
 memory_size= 2000
 epochs=70 #was 100
 learning_rate=2.0
 file=1
-dataset='CIFAR10' #try other dataset
+dataset='CIFAR100' #try other dataset
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
