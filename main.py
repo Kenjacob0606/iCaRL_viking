@@ -31,13 +31,13 @@ for i in range(10): #was 10,5
     accuracy=model.train()
     model.afterTrain(accuracy)
     task_end_time = time.time()
-    filename = f'task_times/1/task_{i}_training_time= {task_end_time - task_start_time:.2f}.txt'
+    filename = f'CIFAR100_class=10_def/task_times/task_{i}_training_time= {task_end_time - task_start_time:.2f}.txt'
     torch.save((task_end_time - task_start_time), filename)
     # if i==9:
 end_time = time.time()
 
 # print('Total training time: {:.2f} seconds'.format(end_time - start_time))
-filename2 = f'total_time/1/total_training_time= {end_time - start_time:.2f}.txt'
+filename2 = f'CIFAR100_class=10_def/total_time/total_training_time= {end_time - start_time:.2f}.txt'
 torch.save((end_time - start_time), filename2)
 
 
