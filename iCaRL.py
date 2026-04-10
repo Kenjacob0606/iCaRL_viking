@@ -109,25 +109,40 @@ class iCaRLmodel:
             print("CIFAR10 dataset loaded successfully.")
 
         elif dataset == 'MNIST':
-            self.transform = transforms.Compose([#transforms.Resize(img_size),
-                                             transforms.ToTensor(),
-                                            transforms.Normalize((0.1306), (0.3081))]) 
+            self.transform = transforms.Compose([
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
+                                                    transforms.ToTensor(),
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                            ]) 
 
-            self.train_transform = transforms.Compose([#transforms.Resize(img_size),
+            self.train_transform = transforms.Compose([
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
                                                     transforms.RandomCrop((32,32),padding=4),
+                                                    # transforms.RandomCrop((28),padding=4),
                                                     transforms.RandomHorizontalFlip(p=0.5),
                                                     transforms.ColorJitter(brightness=0.24705882352941178),
                                                     transforms.ToTensor(),      
-                                                    transforms.Normalize((0.1306), (0.3081))]) 
+                                                    # transforms.Normalize((0.1306), (0.3081))
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                                    ]) 
             
-            self.test_transform = transforms.Compose([#transforms.Resize(img_size),
+            self.test_transform = transforms.Compose([
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
                                                     transforms.ToTensor(),
-                                                    transforms.Normalize((0.1306), (0.3081))]) 
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                                    ]) 
             
-            self.classify_transform=transforms.Compose([transforms.RandomHorizontalFlip(p=1.),
-                                                        #transforms.Resize(img_size),
-                                                        transforms.ToTensor(),
-                                                    transforms.Normalize((0.1306), (0.3081))]) 
+            self.classify_transform=transforms.Compose([
+                                                        # transforms.RandomHorizontalFlip(p=1.),
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
+                                                    transforms.ToTensor(),
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                                    ]) 
+
 
             self.train_dataset = iMNIST('MNIST', transform=self.train_transform, download=True)                       
             self.test_dataset = iMNIST('MNIST', test_transform=self.test_transform, train=False, download=True)
