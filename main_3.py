@@ -15,7 +15,7 @@ batch_size=128
 task_size=1 #num of classes learned each task
 memory_size= 750
 epochs=70 #was 100
-learning_rate=1.5
+learning_rate=2.0
 file=1
 dataset='CIFAR10' #try other dataset
 
@@ -31,14 +31,15 @@ for i in range(10): #was 10,5
     accuracy=model.train()
     model.afterTrain(accuracy)
     task_end_time = time.time()
-    filename = f'CIFAR10_lr=1.5_def/model/task_{i}_training_time= {task_end_time - task_start_time:.2f}.txt'
+    filename = f'CIFAR10_class=1_lr=2.0_def/model/task_{i}_training_time= {task_end_time - task_start_time:.2f}.txt'
     torch.save((task_end_time - task_start_time), filename)
     # if i==9:
 end_time = time.time()
 
 # print('Total training time: {:.2f} seconds'.format(end_time - start_time))
-filename2 = f'CIFAR10_lr=1.5_def/model/total_training_time= {end_time - start_time:.2f}.txt'
+filename2 = f'CIFAR10_class=1_lr=2.0_def/model/total_training_time= {end_time - start_time:.2f}.txt'
 torch.save((end_time - start_time), filename2)
+
 
 
 
