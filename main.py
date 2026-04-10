@@ -23,7 +23,7 @@ model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epo
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
 
 start_time = time.time()
-for i in range(10): #was 10,5
+for i in range(100): #was 10,5
     # if i==0:
     #     start_time = time.time()
     task_start_time = time.time()
@@ -31,13 +31,13 @@ for i in range(10): #was 10,5
     accuracy=model.train()
     model.afterTrain(accuracy)
     task_end_time = time.time()
-    filename = f'CIFAR100_class=1_def/task_times/task_{i}_training_time= {task_end_time - task_start_time:.2f}.txt'
+    filename = f'CIFAR100_class=1_def/model/task_{i}_training_time= {task_end_time - task_start_time:.2f}.txt'
     torch.save((task_end_time - task_start_time), filename)
     # if i==9:
 end_time = time.time()
 
 # print('Total training time: {:.2f} seconds'.format(end_time - start_time))
-filename2 = f'CIFAR100_class=1_def/total_time/total_training_time= {end_time - start_time:.2f}.txt'
+filename2 = f'CIFAR100_class=1_def/model/total_training_time= {end_time - start_time:.2f}.txt'
 torch.save((end_time - start_time), filename2)
 
 

@@ -295,7 +295,7 @@ class iCaRLmodel:
         print("NMS accuracy："+str(KNN_accuracy.item()))
         filename = 'CIFAR100_class=1_def/model/accuracy-%.3f_KNN_accuracy-%.3f_increment-%d_net.pkl' % (accuracy, KNN_accuracy, i + 10)  # changed : to -
         self.accuracy_list.append(KNN_accuracy)  #newly added
-        filename2 = f'CIFAR100_class=1_def/class_means/model_class_mean_{self.task_num}.pth'  #newly added
+        filename2 = f'CIFAR100_class=1_def/model/model_class_mean_{self.task_num}.pth'  #newly added
         torch.save(self.model,filename)
         torch.save({'class_mean_set': self.class_mean_set,}, filename2)
         if self.old_model is not None:      #CIFAR10
@@ -307,7 +307,7 @@ class iCaRLmodel:
         self.old_model.eval()
         
 #GRAPHS
-        if self.task_num==10:                    #Changable param depending on how many class each task
+        if self.task_num==100:                    #Changable param depending on how many class each task
             if self.task_num==10 and self.dataset=='MNIST':     
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
