@@ -293,7 +293,7 @@ class iCaRLmodel:
         self.model.train()
         KNN_accuracy=self._test(self.test_loader,0)
         print("NMS accuracy："+str(KNN_accuracy.item()))
-        filename = 'CIFAR100_class=1_def/model/accuracy-%.3f_KNN_accuracy-%.3f_increment-%d_net.pkl' % (accuracy, KNN_accuracy, i + 10)  # changed : to -
+        filename = f'CIFAR100_class=1_def/model/{self.task_num}-accuracy-{accuracy:.3f}_KNN_accuracy-{KNN_accuracy:.3f}_increment-{i + 10}_net.pkl'  # changed : to -
         self.accuracy_list.append(KNN_accuracy)  #newly added
         filename2 = f'CIFAR100_class=1_def/model/model_class_mean_{self.task_num}.pth'  #newly added
         torch.save(self.model,filename)
