@@ -109,25 +109,40 @@ class iCaRLmodel:
             print("CIFAR10 dataset loaded successfully.")
 
         elif dataset == 'MNIST':
-            self.transform = transforms.Compose([#transforms.Resize(img_size),
-                                             transforms.ToTensor(),
-                                            transforms.Normalize((0.1306), (0.3081))]) 
+            self.transform = transforms.Compose([
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
+                                                    transforms.ToTensor(),
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                            ]) 
 
-            self.train_transform = transforms.Compose([#transforms.Resize(img_size),
+            self.train_transform = transforms.Compose([
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
                                                     transforms.RandomCrop((32,32),padding=4),
+                                                    # transforms.RandomCrop((28),padding=4),
                                                     transforms.RandomHorizontalFlip(p=0.5),
                                                     transforms.ColorJitter(brightness=0.24705882352941178),
                                                     transforms.ToTensor(),      
-                                                    transforms.Normalize((0.1306), (0.3081))]) 
+                                                    # transforms.Normalize((0.1306), (0.3081))
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                                    ]) 
             
-            self.test_transform = transforms.Compose([#transforms.Resize(img_size),
+            self.test_transform = transforms.Compose([
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
                                                     transforms.ToTensor(),
-                                                    transforms.Normalize((0.1306), (0.3081))]) 
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                                    ]) 
             
-            self.classify_transform=transforms.Compose([transforms.RandomHorizontalFlip(p=1.),
-                                                        #transforms.Resize(img_size),
-                                                        transforms.ToTensor(),
-                                                    transforms.Normalize((0.1306), (0.3081))]) 
+            self.classify_transform=transforms.Compose([
+                                                        # transforms.RandomHorizontalFlip(p=1.),
+                                                    transforms.Resize((32,32)),
+                                                    transforms.Grayscale(num_output_channels=3),  # Convert to 3 channels
+                                                    transforms.ToTensor(),
+                                                    transforms.Normalize((0.1306, 0.1306, 0.1306), (0.3081, 0.3081, 0.3081))
+                                                    ]) 
+
 
             self.train_dataset = iMNIST('MNIST', transform=self.train_transform, download=True)                       
             self.test_dataset = iMNIST('MNIST', test_transform=self.test_transform, train=False, download=True)
@@ -278,9 +293,9 @@ class iCaRLmodel:
         self.model.train()
         KNN_accuracy=self._test(self.test_loader,0)
         print("NMS accuracy："+str(KNN_accuracy.item()))
-        filename = 'CIFAR100_class=10_mem=20K_def/model/accuracy-%.3f_KNN_accuracy-%.3f_increment-%d_net.pkl' % (accuracy, KNN_accuracy, i + 10)  # changed : to -
+        filename = 'CIFAR10_class=1_mem=500_def/model/accuracy-%.3f_KNN_accuracy-%.3f_increment-%d_net.pkl' % (accuracy, KNN_accuracy, i + 10)  # changed : to -
         self.accuracy_list.append(KNN_accuracy)  #newly added
-        filename2 = f'CIFAR100_class=10_mem=20K_def/class_means/model_class_mean_{self.task_num}.pth'  #newly added
+        filename2 = f'CIFAR10_class=1_mem=500_def/model/model_class_mean_{self.task_num}.pth'  #newly added
         torch.save(self.model,filename)
         torch.save({'class_mean_set': self.class_mean_set,}, filename2)
         if self.old_model is not None:      #CIFAR10
@@ -300,7 +315,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig('CIFAR100_class=10_mem=20K_def/model/accuracy_vs_tasks.png') 
+                plt.savefig('CIFAR10_class=1_mem=500_def/model/accuracy_vs_tasks.png') 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -308,7 +323,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig('CIFAR100_class=10_mem=20K_def/model/accuracy_vs_tasks_line.png') 
+                plt.savefig('CIFAR10_class=1_mem=500_def/model/accuracy_vs_tasks_line.png') 
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -316,7 +331,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig('CIFAR100_class=10_mem=20K_def/model/accuracy_vs_tasks.png') 
+                plt.savefig('CIFAR10_class=1_mem=500_def/model/accuracy_vs_tasks.png') 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -324,7 +339,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig('CIFAR100_class=10_mem=20K_def/model/accuracy_vs_tasks_line.png') 
+                plt.savefig('CIFAR10_class=1_mem=500_def/model/accuracy_vs_tasks_line.png') 
                 # plt.show()
                 # print(len(self.class_mean_set))
     
