@@ -34,7 +34,6 @@ class iCaRLmodel:
         self.file = file
         self.dataset = dataset
         self.train_no = train_no
-        self.train = train
         self.task_num = 0   #newly added
         self.task_list = []  #newly added
         self.accuracy_list = []  #newly added

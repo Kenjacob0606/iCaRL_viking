@@ -43,7 +43,6 @@ class iCaRLmodel:
         self.exemplar_set = []
         self.class_mean_set = []
         self.numclass = numclass
-        self.train = train
 
         
         self.old_model = None #added to store the old model for distillation loss
