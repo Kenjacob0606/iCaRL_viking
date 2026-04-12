@@ -308,7 +308,7 @@ class iCaRLmodel:
         self.old_model.eval()
         
 #GRAPHS
-        if self.task_num==100:                    #Changable param depending on how many class each task
+        if self.task_num==10:                    #Changable param depending on how many class each task
             if self.task_num==10 and self.dataset=='MNIST':     
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))

@@ -43,6 +43,9 @@ end_time = time.time()
 filename2 = f'CIFAR10_class=1_mem=750_lr=2.0_def/model/total_training_time= {end_time - start_time:.2f}_train={train_no}.txt'
 torch.save((end_time - start_time), filename2)
 
+del model
+torch.cuda.empty_cache()
+
 ######################################################################################################################################################
 #TRAIN 2
 
