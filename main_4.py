@@ -1,4 +1,4 @@
-from iCaRL import iCaRLmodel
+from iCaRL_4 import iCaRLmodel
 from ResNet import resnet18_cbam
 from ResNet import resnet18_MNIST_cbam
 from ResNet import resnet34_cbam
@@ -59,7 +59,7 @@ epochs=70 #was 100
 learning_rate=2.0
 file=1
 dataset='CIFAR100' #try other dataset
-train_no = 1
+train_no = 2
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
@@ -98,7 +98,7 @@ epochs=70 #was 100
 learning_rate=2.0
 file=1
 dataset='CIFAR100' #try other dataset
-train_no = 1
+train_no = 3
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
