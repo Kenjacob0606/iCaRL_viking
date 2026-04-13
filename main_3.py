@@ -79,7 +79,7 @@ for i in range(10): #was 10,5
 end_time = time.time()
 
 # print('Total training time: {:.2f} seconds'.format(end_time - start_time))
-filename2 = f'cCIFAR100_mem=5K_def/model/total_training_time= {end_time - start_time:.2f}_train={train_no}.txt' #modify
+filename2 = f'CIFAR100_mem=5K_def/model/total_training_time= {end_time - start_time:.2f}_train={train_no}.txt' #modify
 torch.save((end_time - start_time), filename2)
 
 del model
