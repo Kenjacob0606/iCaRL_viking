@@ -11,7 +11,7 @@ import time
 #TRAIN 1
 
 numclass=10#num of classes learned initially, will be updated in incremental learning
-feature_extractor=resnet18_cbam(numclass=numclass) #try other resnets
+feature_extractor=resnet18_cbam(num_classes=numclass) #try other resnets
 img_size=32
 batch_size=128  
 task_size=10 #num of classes learned each task
