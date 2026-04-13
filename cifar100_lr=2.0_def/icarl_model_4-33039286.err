@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/scratch/users/kj929/iCaRL_viking/main_4.py", line 116, in <module>
+    torch.save((task_end_time - task_start_time), filename)
+  File "/users/kj929/venvs/icarl_env/lib/python3.11/site-packages/torch/serialization.py", line 1003, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/kj929/venvs/icarl_env/lib/python3.11/site-packages/torch/serialization.py", line 865, in _open_zipfile_writer
+    return container(name_or_buffer)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/kj929/venvs/icarl_env/lib/python3.11/site-packages/torch/serialization.py", line 829, in __init__
+    torch._C.PyTorchFileWriter(
+RuntimeError: Parent directory cifar100_lr=1.0_def/model does not exist.
