@@ -32,7 +32,7 @@ for i in range(10): #was 10,5
     accuracy=model.train()
     model.afterTrain(accuracy)
     task_end_time = time.time()
-    filename = f'ccifar100_lr=2.05_def/model/task_{i}_training_time={task_end_time - task_start_time:.2f}_train={train_no}.txt'     #modify
+    filename = f'cifar100_lr=2.05_def/model/task_{i}_training_time={task_end_time - task_start_time:.2f}_train={train_no}.txt'     #modify
     torch.save((task_end_time - task_start_time), filename)
     # if i==9:
 end_time = time.time()
