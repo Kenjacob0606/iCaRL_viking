@@ -294,9 +294,9 @@ class iCaRLmodel:
         self.model.train()
         KNN_accuracy=self._test(self.test_loader,0)
         print("NMS accuracy："+str(KNN_accuracy.item()))
-        filename = f'CIFAR100_lr=1.5_def/model/{self.task_num}-accuracy-{accuracy:.3f}_KNN_accuracy-{KNN_accuracy:.3f}_increment-{i + 10}_net_train={self.train_no}.pkl'  # changed : to -
+        filename = f'cifar100_class=50_def/model/{self.task_num}-accuracy-{accuracy:.3f}_KNN_accuracy-{KNN_accuracy:.3f}_increment-{i + 10}_net_train={self.train_no}.pkl'  # changed : to -
         self.accuracy_list.append(KNN_accuracy)  #newly added
-        filename2 = f'CIFAR100_lr=1.5_def/model/model_class_mean_{self.task_num}_train={self.train_no}.pth'  #newly added
+        filename2 = f'cifar100_class=50_def/model/model_class_mean_{self.task_num}_train={self.train_no}.pth'  #newly added
         torch.save(self.model,filename)
         torch.save({'class_mean_set': self.class_mean_set,}, filename2)
         if self.old_model is not None:      #CIFAR10
@@ -308,7 +308,7 @@ class iCaRLmodel:
         self.old_model.eval()
         
 #GRAPHS
-        if self.task_num==10:                    #Changable param depending on how many class each task
+        if self.task_num==2:                    #Changable param depending on how many class each task
             if self.task_num==10 and self.dataset=='MNIST':     
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -332,7 +332,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig(f'CIFAR100_lr=1.5_def/model/accuracy_vs_tasks_train={self.train_no}.png') 
+                plt.savefig(f'cifar100_class=50_def/model/accuracy_vs_tasks_train={self.train_no}.png') 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -340,7 +340,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig(f'CIFAR100_lr=1.5_def/model/accuracy_vs_tasks_line_train={self.train_no}.png') 
+                plt.savefig(f'cifar100_class=50_def/model/accuracy_vs_tasks_line_train={self.train_no}.png') 
                 # plt.show()
                 # print(len(self.class_mean_set))
                 plt.clf()
