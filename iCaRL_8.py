@@ -65,7 +65,7 @@ class iCaRLmodel:
                                             transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))]) #CIFAR100
             
             self.train_transform = transforms.Compose([#transforms.Resize(img_size),
-                                                    # transforms.RandomCrop((32,32),padding=4),
+                                                    transforms.RandomCrop((32,32),padding=4),
                                                     # transforms.RandomHorizontalFlip(p=0.5),
                                                     # transforms.ColorJitter(brightness=0.24705882352941178),
                                                     transforms.ToTensor(),
@@ -317,8 +317,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename) 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3) 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -326,8 +326,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
-                plt.savefig(filename2) 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
+                plt.savefig(filename4) 
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -335,16 +335,16 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename) 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3) 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
                 plt.yticks(range(0, 101, 10))
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
-                plt.savefig(filename2) 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
+                plt.savefig(filename4) 
                 # plt.show()
                 # print(len(self.class_mean_set))
                 plt.clf()

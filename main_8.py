@@ -6,7 +6,7 @@ from ResNet import resnet50_cbam
 import torch
 import time
 
-#cifar100_no_augment_def
+#cifar100_only_rand_Crop_def
 
 numclass=10#num of classes learned initially, will be updated in incremental learning
 feature_extractor=resnet18_cbam(num_classes=numclass) #try other resnets
@@ -19,7 +19,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR100' #try other dataset
 train_no = 1
-filenames = "cifar100_no_augment_def"
+filenames = "cifar100_only_rand_Crop_def"
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
@@ -60,7 +60,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR100' #try other dataset
 train_no = 2
-filenames = "cifar100_no_augment_def"
+filenames = "cifar100_only_rand_Crop_def"
 
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
@@ -102,7 +102,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR100' #try other dataset
 train_no = 3
-filenames = "cifar100_no_augment_def"
+filenames = "cifar100_only_rand_Crop_def"
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
