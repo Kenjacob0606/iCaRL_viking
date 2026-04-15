@@ -1,4 +1,4 @@
-from iCaRL_6 import iCaRLmodel              #modify
+from iCaRL_14_lowLrAllEpoch import iCaRLmodel              #modify
 from ResNet import resnet18_cbam
 from ResNet import resnet18_MNIST_cbam
 from ResNet import resnet34_cbam
