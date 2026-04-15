@@ -199,7 +199,7 @@ class iCaRLmodel:
     def train(self):
         # task_start_time = time.time()  #new
         accuracy = 0
-        opt = optim.SGD(self.model.parameters(), lr=self.learning_rate, weight_decay=0.00001)
+        opt = optim.Adam(self.model.parameters(), lr=self.learning_rate, weight_decay=0.00001)
         # opt = optim.SGD(self.model.parameters(), lr=self.learning_rate, weight_decay=0.0001)       #CIFAR10
 
         # learning rate is divided by 5 for all tasks during epoch 49 and 63, first task has different lr modification each time than the rest
@@ -317,8 +317,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename)                 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3)                 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -326,8 +326,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename)                 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename4)                 
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -335,8 +335,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename)                  
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3)                  
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -344,8 +344,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename)                 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename4)                 
                 # plt.show()
                 # print(len(self.class_mean_set))
                 plt.clf()
