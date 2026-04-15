@@ -6,7 +6,7 @@ from ResNet import resnet50_cbam
 import torch
 import time
 
-# "cifar100_no_exemplar"
+# "cifar100_no_exemplar"""
 
 numclass=10#num of classes learned initially, will be updated in incremental learning
 feature_extractor=resnet18_cbam(num_classes=numclass) #try other resnets
