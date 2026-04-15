@@ -9,7 +9,7 @@ from PIL import Image
 import torch.optim as optim
 from iMNIST import iMNIST
 from myNetwork import network
-from iCIFAR100 import iCIFAR100
+from iCIFAR100_noExemp import iCIFAR100
 from iCIFAR10 import iCIFAR10
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt #new
@@ -287,7 +287,7 @@ class iCaRLmodel:
         m=int(self.memory_size/self.numclass) #compute exemplar size for each class
         # self._reduce_exemplar_sets(m) #exemplars per class decrease as more classes are added
         for i in range(self.numclass-self.task_size,self.numclass): #loop over newly learned classes only
-            print('construct class %s examplar:'%(i),end='')
+            # print('construct class %s examplar:'%(i),end='')
             images=self.train_dataset.get_image_class(i)
             # self._construct_exemplar_set(images,m)
         self.numclass+=self.task_size
@@ -299,7 +299,7 @@ class iCaRLmodel:
         self.accuracy_list.append(accuracy)  #newly added
         # filename2 = f'{self.filenames}/model/model_class_mean_{self.task_num}_train={self.train_no}.pth'  #newly added
         torch.save(self.model,filename)
-        torch.save({'class_mean_set': self.class_mean_set,}, filename2)
+        # torch.save({'class_mean_set': self.class_mean_set,}, filename2)
         if self.old_model is not None:      #CIFAR10
             self.old_model.cpu()
             del self.old_model
