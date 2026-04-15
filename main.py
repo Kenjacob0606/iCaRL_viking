@@ -6,7 +6,7 @@ from ResNet import resnet50_cbam
 import torch
 import time
 
-#"cifar10_class=2_def"
+#"cifar10_class=2_mem=1K_def"
 
 #TRAIN 1
 
@@ -21,7 +21,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR10' #try other dataset
 train_no = 1
-filenames = "cifar10_class=2_def"
+filenames = "cifar10_class=2_mem=1K_def"
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
@@ -61,7 +61,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR10' #try other dataset
 train_no = 2
-filenames = "cifar10_class=2_def"
+filenames = "cifar10_class=2_mem=1K_def"
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
 #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
@@ -100,7 +100,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR10' #try other dataset
 train_no = 3
-filenames = "cifar10_class=2_def"
+filenames = "cifar10_class=2_mem=1K_def"
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
 
