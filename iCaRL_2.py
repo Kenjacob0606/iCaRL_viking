@@ -27,10 +27,11 @@ def get_one_hot(target,num_class):
 
 class iCaRLmodel:
 
-    def __init__(self,numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no):
+    def __init__(self,numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no, filenames):
 
         super(iCaRLmodel, self).__init__()
         # self.img_size=
+        self.filenames = filenames
         self.file = file
         self.dataset = dataset
         self.train_no = train_no
@@ -294,9 +295,9 @@ class iCaRLmodel:
         self.model.train()
         KNN_accuracy=self._test(self.test_loader,0)
         print("NMS accuracy："+str(KNN_accuracy.item()))
-        filename = f'cifar100_class=5_def/model/{self.task_num}-accuracy-{accuracy:.3f}_KNN_accuracy-{KNN_accuracy:.3f}_increment-{i + 10}_net_train={self.train_no}.pkl'  # changed : to -
+        filename = f'{self.filenames}/model/{self.task_num}-accuracy-{accuracy:.3f}_KNN_accuracy-{KNN_accuracy:.3f}_increment-{i + 10}_net_train={self.train_no}.pkl'  # changed : to -
         self.accuracy_list.append(KNN_accuracy)  #newly added
-        filename2 = f'cifar100_class=5_def/model/model_class_mean_{self.task_num}_train={self.train_no}.pth'  #newly added
+        filename2 = f'{self.filenames}/model/model_class_mean_{self.task_num}_train={self.train_no}.pth'  #newly added
         torch.save(self.model,filename)
         torch.save({'class_mean_set': self.class_mean_set,}, filename2)
         if self.old_model is not None:      #CIFAR10
@@ -316,7 +317,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig('CIFAR10_class=1_mem=500_def/model/accuracy_vs_tasks.png') 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3)                 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -324,7 +326,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig('CIFAR10_class=1_mem=500_def/model/accuracy_vs_tasks_line.png') 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename4)                 
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -332,7 +335,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig(f'cifar100_class=5_def/model/accuracy_vs_tasks_train={self.train_no}.png') 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3)                  
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -340,7 +344,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                plt.savefig(f'cifar100_class=5_def/model/accuracy_vs_tasks_line_train={self.train_no}.png') 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename4)                 
                 # plt.show()
                 # print(len(self.class_mean_set))
     
