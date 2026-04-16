@@ -309,7 +309,7 @@ class iCaRLmodel:
         self.old_model.eval()
         
 #GRAPHS
-        if self.task_num==5:                    #Changable param depending on how many class each task
+        if self.task_num==10:                    #Changable param depending on how many class each task
             if self.task_num==10 and self.dataset=='MNIST':     
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -317,7 +317,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
                 plt.savefig(filename3)                 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
@@ -326,8 +326,9 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename4 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
                 plt.savefig(filename4) 
+                plt.clf()
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -335,7 +336,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
                 plt.savefig(filename3)                  
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
@@ -344,7 +345,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename4 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
                 plt.savefig(filename4)                 
                 # plt.show()
                 # print(len(self.class_mean_set))
