@@ -309,7 +309,7 @@ class iCaRLmodel:
         self.old_model.eval()
         
 #GRAPHS
-        if self.task_num==10:                    #Changable param depending on how many class each task
+        if self.task_num==5:                    #Changable param depending on how many class each task
             if self.task_num==10 and self.dataset=='MNIST':     
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -317,8 +317,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename) 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3) 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -326,8 +326,8 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
-                plt.savefig(filename2) 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
+                plt.savefig(filename4) 
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -335,16 +335,16 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks.png'
-                plt.savefig(filename) 
+                filename3 = f'{self.filenames}/model/accuracy_vs_tasks.png'
+                plt.savefig(filename3) 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
                 plt.xticks(range(len(self.accuracy_list)+1))
                 plt.yticks(range(0, 101, 10))
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
-                plt.savefig(filename2) 
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks_line.png'
+                plt.savefig(filename4) 
                 # plt.show()
                 # print(len(self.class_mean_set))
                 plt.clf()
