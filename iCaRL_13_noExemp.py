@@ -10,7 +10,7 @@ import torch.optim as optim
 from iMNIST import iMNIST
 from myNetwork import network
 from iCIFAR100_noExemp import iCIFAR100
-from iCIFAR10 import iCIFAR10
+from iCIFAR10_noExemp import iCIFAR10
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt #new
 
