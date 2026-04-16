@@ -60,7 +60,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR10' #try other dataset
 train_no = 2
-filenames = "cifar10_class=2_mem=500_def"
+filenames = "cifar10_class=2_mem=100_def"
 
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
@@ -102,7 +102,7 @@ learning_rate=2.0
 file=1
 dataset='CIFAR10' #try other dataset
 train_no = 3
-filenames = "cifar10_class=2_mem=500_def"
+filenames = "cifar10_class=2_mem=100_def"
 
 
 model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
