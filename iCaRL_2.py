@@ -326,7 +326,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename4 = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks_lines-{self.train_no}.png'
                 plt.savefig(filename4)                 
             else:
                 plt.plot(self.task_list, self.accuracy_list, "g+")
@@ -344,7 +344,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename4 = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
+                filename4 = f'{self.filenames}/model/accuracy_vs_tasks_lines-{self.train_no}.png'
                 plt.savefig(filename4)                 
                 # plt.show()
                 # print(len(self.class_mean_set))
