@@ -8,9 +8,14 @@ import time
 
 #   "MNIST_class=1_mem=100_def"
 
-for train_no in range (1,4):
-    numclass=1      #num of classes learned initially, will be updated in incremental learning
-    feature_extractor=resnet18_cbam(num_classes=numclass) #try other resnets
+for train_no in range (3,4):
+    dataset='MNIST' #try other dataset
+    numclass=10      #num of classes learned initially, will be updated in incremental learning
+    if dataset == 'CIFAR100':
+        numclasses = 100
+    else:
+        numclasses = 10
+    feature_extractor=resnet18_cbam(num_classes=numclasses) #try other resnets
     img_size=32
     batch_size=128  
     task_size=1         #num of classes learned each task
@@ -18,8 +23,6 @@ for train_no in range (1,4):
     epochs=70 #was 100
     learning_rate=2.0
     file=1
-    dataset='MNIST' #try other dataset
-    # train_no = 1
     filenames = "MNIST_class=1_mem=100_def"
 
 
