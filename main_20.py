@@ -10,7 +10,7 @@ import time
 
 for train_no in range (3,4):
     dataset='MNIST' #try other dataset
-    numclass=10      #num of classes learned initially, will be updated in incremental learning
+    numclass=1      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
         numclasses = 100
     else:
