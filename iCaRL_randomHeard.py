@@ -13,6 +13,7 @@ from iCIFAR100 import iCIFAR100
 from iCIFAR10 import iCIFAR10
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt #new
+import random
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # device = torch.device("cpu")
@@ -357,7 +358,7 @@ class iCaRLmodel:
 
 
     def _construct_exemplar_set(self, images, m):   
-        images = list[images]
+        images = list(images)
         np.random.shuffle(images)
         exemplar = images[:m]
         print("the size of exemplar :%s" % (str(len(exemplar))))
