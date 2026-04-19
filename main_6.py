@@ -6,7 +6,7 @@ from ResNet import resnet50_cbam
 import torch
 import time
 
-#   MNIST_15epo_mem=2K_def
+#   MNIST_25epo_mem=2K_def
 
 for train_no in range(1,4):
     dataset='MNIST' #try other dataset
@@ -23,7 +23,7 @@ for train_no in range(1,4):
     epochs=25 #was 100
     learning_rate=2.0
     file=1
-    filenames = "MNIST_15epo_mem=2K_def"
+    filenames = "MNIST_25epo_mem=2K_def"
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
     #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
