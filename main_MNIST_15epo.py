@@ -20,7 +20,7 @@ for train_no in range (1,4):
     batch_size=128  
     task_size=1         #num of classes learned each task
     memory_size= 500
-    epochs=70 #was 100
+    epochs=15 #was 100
     learning_rate=2.0
     file=1
     filenames = "MNIST_class=1_mem=500_def"
