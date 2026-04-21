@@ -8,7 +8,7 @@ import time
 
 #"cifar10_class=1_mem=5K_def"
 
-for train_no in range(1,4):
+for train_no in range(3,4):
     dataset='CIFAR100' #try other dataset
     numclass=10      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
