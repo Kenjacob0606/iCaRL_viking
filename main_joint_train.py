@@ -23,7 +23,7 @@ for train_no in range (1,4):
     epochs=15 #was 100
     learning_rate=2.0
     file=1
-    filenames = "MNIST_class=1_epo15_joint_def"
+    filenames = "MNIST_epo15_joint_def"
 
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset

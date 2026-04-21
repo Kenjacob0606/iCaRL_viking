@@ -7,7 +7,7 @@ import numpy as np
 from torch.nn import functional as F
 from PIL import Image
 import torch.optim as optim
-from iMNIST import iMNIST
+from iMNIST_noExemp import iMNIST
 from myNetwork import network
 from iCIFAR100_noExemp import iCIFAR100
 from iCIFAR10_noExemp import iCIFAR10
