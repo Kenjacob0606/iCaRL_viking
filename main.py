@@ -23,7 +23,6 @@ for train_no in range(1,4):
     epochs=25 #was 100
     learning_rate=2.0
     file=1
-    dataset='CIFAR10' #try other dataset
     filenames = "cifar100_epo25_def"
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
