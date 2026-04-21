@@ -1,4 +1,4 @@
-from iCaRL_17 import iCaRLmodel
+from iCaRL_13_noExemp import iCaRLmodel
 from ResNet import resnet18_cbam
 from ResNet import resnet18_MNIST_cbam
 from ResNet import resnet34_cbam
@@ -10,7 +10,7 @@ import time
 
 for train_no in range (1,4):
     dataset='MNIST' #try other dataset
-    numclass=1      #num of classes learned initially, will be updated in incremental learning
+    numclass=10      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
         numclasses = 100
     else:
@@ -19,7 +19,7 @@ for train_no in range (1,4):
     img_size=32
     batch_size=128  
     task_size=1         #num of classes learned each task
-    memory_size= 50000
+    memory_size= 2000
     epochs=15 #was 100
     learning_rate=2.0
     file=1

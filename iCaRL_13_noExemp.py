@@ -204,7 +204,7 @@ class iCaRLmodel:
 
         # learning rate is divided by 5 for all tasks during epoch 49 and 63, first task has different lr modification each time than the rest
         for epoch in range(self.epochs):
-            if epoch == 48:
+            if epoch == 9:
                 # if self.numclass==self.task_size:
                 #      print(1)
                 #      opt = optim.SGD(self.model.parameters(), lr=1.0/5, weight_decay=0.00001)
@@ -213,7 +213,7 @@ class iCaRLmodel:
                     p['lr'] =self.learning_rate/ 5
                      #opt = optim.SGD(self.model.parameters(), lr=self.learning_rate/ 5,weight_decay=0.00001,momentum=0.9,nesterov=True,)
                 print("change learning rate:%.3f" % (self.learning_rate / 5))
-            elif epoch == 62:
+            elif epoch == 13:
                 # if self.numclass>self.task_size:
                 if self.numclass>=self.task_size:
                     for p in opt.param_groups:
@@ -309,7 +309,7 @@ class iCaRLmodel:
         self.old_model.eval()
         
 #GRAPHS
-        if self.task_num==10:                    #Changable param depending on how many class each task
+        if self.task_num==self.task_size:                    #Changable param depending on how many class each task
             if self.task_num==10 and self.dataset=='MNIST':     
                 plt.plot(self.task_list, self.accuracy_list, "g+")
                 plt.xticks(range(len(self.accuracy_list)+1))
@@ -336,7 +336,7 @@ class iCaRLmodel:
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
                 plt.title("Accuracy vs Tasks")
-                filename = f'{self.filenames}/model/accuracy_vs_tasks-{self.train_no}.png'
+                filename = f'{self.filenames}/model/accuracy_vs_tasks_train={self.train_no}.png'
                 plt.savefig(filename) 
                 # plt.show()
                 plt.plot(self.task_list, self.accuracy_list, "g+-")
@@ -344,7 +344,7 @@ class iCaRLmodel:
                 plt.yticks(range(0, 101, 10))
                 plt.xlabel("Task")
                 plt.ylabel("Accuracy")
-                filename2 = f'{self.filenames}/model/accuracy_vs_tasks_line-{self.train_no}.png'
+                filename2 = f'{self.filenames}/model/accuracy_vs_tasks_line_train={self.train_no}.png'
                 plt.savefig(filename2) 
                 # plt.show()
                 # print(len(self.class_mean_set))
