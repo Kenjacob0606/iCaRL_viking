@@ -204,7 +204,7 @@ class iCaRLmodel:
 
         # learning rate is divided by 5 for all tasks during epoch 49 and 63, first task has different lr modification each time than the rest
         for epoch in range(self.epochs):
-            if epoch == 15:
+            if epoch == 48:
                 # if self.numclass==self.task_size:
                 #      print(1)
                 #      opt = optim.SGD(self.model.parameters(), lr=1.0/5, weight_decay=0.00001)
@@ -213,7 +213,7 @@ class iCaRLmodel:
                     p['lr'] =self.learning_rate/ 5
                      #opt = optim.SGD(self.model.parameters(), lr=self.learning_rate/ 5,weight_decay=0.00001,momentum=0.9,nesterov=True,)
                 print("change learning rate:%.3f" % (self.learning_rate / 5))
-            elif epoch == 22:
+            elif epoch == 62:
                 # if self.numclass>self.task_size:
                 if self.numclass>=self.task_size:
                      for p in opt.param_groups:
@@ -222,14 +222,14 @@ class iCaRLmodel:
                 # else:
                 #      opt = optim.SGD(self.model.parameters(), lr=1.0/25, weight_decay=0.00001)
                 print("change learning rate:%.3f" % (self.learning_rate / 25))
-            # elif epoch == 80:
-            #       if self.numclass==self.task_size:
-            #          opt = optim.SGD(self.model.parameters(), lr=1.0 / 125,weight_decay=0.00001)
-            #       else:
-            #          for p in opt.param_groups:
-            #              p['lr'] =self.learning_rate/ 125
-            #          #opt = optim.SGD(self.model.parameters(), lr=self.learning_rate / 125,weight_decay=0.00001,momentum=0.9,nesterov=True,)
-            #       print("change learning rate:%.3f" % (self.learning_rate / 100))
+            elif epoch == 80:
+                #   if self.numclass==self.task_size:
+                #      opt = optim.SGD(self.model.parameters(), lr=1.0 / 125,weight_decay=0.00001)
+                #   else:
+                for p in opt.param_groups:
+                    p['lr'] =self.learning_rate/ 125
+                #opt = optim.SGD(self.model.parameters(), lr=self.learning_rate / 125,weight_decay=0.00001,momentum=0.9,nesterov=True,)
+                print("change learning rate:%.3f" % (self.learning_rate / 100))
 
             for step, (indexs, images, target) in enumerate(self.train_loader):
                 images, target = images.to(device), target.to(device)

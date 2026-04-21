@@ -20,10 +20,10 @@ for train_no in range(1,4):
     batch_size=128  
     task_size=10      #num of classes learned each task
     memory_size= 2000
-    epochs=25 #was 100
+    epochs=100 #was 100
     learning_rate=2.0
     file=1
-    filenames = "cifar100_epo25_def"
+    filenames = "cifar100_epo100_def"
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
     #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
