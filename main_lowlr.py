@@ -23,7 +23,7 @@ for train_no in range(1,4):
     epochs=70 #was 100
     learning_rate=0.5
     file=1
-    filenames = "cifar100_lr=0.1_def"
+    filenames = "cifar100_lr=0.5_def"
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
     #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
