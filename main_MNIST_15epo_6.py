@@ -19,11 +19,11 @@ for train_no in range (1,4):
     img_size=32
     batch_size=128  
     task_size=1         #num of classes learned each task
-    memory_size= 50
+    memory_size= 1000
     epochs=15 #was 100
-    learning_rate=2.0
+    learning_rate=1.25
     file=1
-    filenames = "MNIST_class=1_mem=50_def"
+    filenames = "MNIST_class=1_1.25_def"
 
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
