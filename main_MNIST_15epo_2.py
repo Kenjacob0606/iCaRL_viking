@@ -30,7 +30,7 @@ for train_no in range (1,4):
     #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
 
     start_time = time.time()
-    for i in range(5): #was 10,5
+    for i in range(10): #was 10,5
         # if i==0:
         #     start_time = time.time()
         task_start_time = time.time()
