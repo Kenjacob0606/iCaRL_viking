@@ -10,7 +10,7 @@ import time
 
 #TRAIN 1
 
-for train_no in range(3,4):
+for train_no in range(1,4):
     dataset='CIFAR10' #try other dataset
     numclass=1      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
@@ -21,11 +21,11 @@ for train_no in range(3,4):
     img_size=32
     batch_size=128  
     task_size=1      #num of classes learned each task
-    memory_size= 2000
+    memory_size= 1000
     epochs=50 #was 100
-    learning_rate=1.0
+    learning_rate= 0.5
     file=1
-    filenames = "CIFAR10_lr=1.0_def"
+    filenames = "CIFAR10_lr=0.5_mem=1000_def"
 
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
