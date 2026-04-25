@@ -8,7 +8,7 @@ import time
 
 #cifar100_resnet34_def
 
-for train_no in range(1,4):
+for train_no in range(3,4):
     dataset='CIFAR10' #try other dataset
     numclass=1      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
