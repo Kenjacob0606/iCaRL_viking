@@ -17,7 +17,7 @@ for train_no in range(1,4):
         numclasses = 100
     else:
         numclasses = 10
-    feature_extractor=resnet18_cbam(num_classes=numclasses) #try other resnets
+    feature_extractor=resnet34_cbam(num_classes=numclasses) #try other resnets
     img_size=32
     batch_size=128  
     task_size= 5      #num of classes learned each task
@@ -25,7 +25,7 @@ for train_no in range(1,4):
     epochs=50 #was 100
     learning_rate= 0.5
     file=1
-    filenames = "CIFAR10_class=5_def"
+    filenames = "CIFAR10_resnet34_class=5_def"
 
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
