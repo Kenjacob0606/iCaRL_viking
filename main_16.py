@@ -15,7 +15,7 @@ for train_no in range(1,4):
         numclasses = 100
     else:
         numclasses = 10
-    feature_extractor=resnet18_cbam(num_classes=numclasses) #try other resnets
+    feature_extractor=resnet34_cbam(num_classes=numclasses) #try other resnets
     img_size=32
     batch_size=128  
     task_size= 10         #num of classes learned each task
