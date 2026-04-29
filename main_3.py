@@ -1,5 +1,5 @@
 from iCaRL_cifar10_epo50 import iCaRLmodel #modify
-from ResNet import resnet18_cbam
+from ResNet_CBAM import resnet18_cbam
 from ResNet import resnet18_MNIST_cbam
 from ResNet import resnet34_cbam
 from ResNet import resnet50_cbam
@@ -12,27 +12,27 @@ import time
 
 for train_no in range(1,4):
     dataset='CIFAR10' #try other dataset
-    numclass= 5      #num of classes learned initially, will be updated in incremental learning
+    numclass= 1      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
         numclasses = 100
     else:
         numclasses = 10
-    feature_extractor=resnet34_cbam(num_classes=numclasses) #try other resnets
+    feature_extractor=resnet18_cbam(num_classes=numclasses) #try other resnets
     img_size=32
     batch_size=128  
-    task_size= 5      #num of classes learned each task
+    task_size= 1      #num of classes learned each task
     memory_size= 2000
-    epochs=50 #was 100
+    epochs= 50 #was 100
     learning_rate= 0.5
     file=1
-    filenames = "CIFAR10_resnet34_class=5_def"
+    filenames = "CIFAR10_CBAM18_def"
 
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
     #model.model.load_state_dict(torch.load('model/ownTry_accuracy:84.000_KNN_accuracy:84.000_increment:10_net.pkl'))
 
     start_time = time.time()
-    for i in range(2): #was 10,5
+    for i in range(10): #was 10,5
         # if i==0:
         #     start_time = time.time()
         task_start_time = time.time()

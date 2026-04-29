@@ -1,14 +1,14 @@
 from iCaRL_cifar10_epo50 import iCaRLmodel
 from ResNet import resnet18_cbam
 from ResNet import resnet18_MNIST_cbam
-from ResNet import resnet34_cbam
+from ResNet_CBAM import resnet34_cbam
 from ResNet import resnet50_cbam
 import torch
 import time
 
 #   cifar10_epo_15_class=1_mem=2K_def
 
-for train_no in range(2,4):
+for train_no in range(1,4):
     dataset='CIFAR10' #try other dataset
     numclass= 1      #num of classes learned initially, will be updated in incremental learning
     if dataset == 'CIFAR100':
@@ -23,7 +23,7 @@ for train_no in range(2,4):
     epochs= 50 #was 100
     learning_rate= 0.5
     file=1
-    filenames = "cifar10_res34_class=1_def"
+    filenames = "cifar10_CBAM34_def"
 
 
     model=iCaRLmodel(numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file,train_no,filenames) #try other dataset
