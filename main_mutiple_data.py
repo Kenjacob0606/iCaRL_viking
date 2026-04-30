@@ -49,6 +49,7 @@ for train_no in range(1,4):
     model.load_dataset(model.dataset)
     model.learning_rate = 1.5
     model.epochs = 15
+    model.dataset_offset = 10
 
     start_time = time.time()
     for i in range(10): #was 10,5
