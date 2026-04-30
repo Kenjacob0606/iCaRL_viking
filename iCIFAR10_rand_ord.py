@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image
 
 
-class iDataset(CIFAR10):
+class iCIFAR10(CIFAR10):
     def __init__(self, root,
                  train=True,
                  transform=None,
@@ -17,7 +17,7 @@ class iDataset(CIFAR10):
                  test_transform=None,
                  target_test_transform=None,
                  download=False):
-        super(iDataset, self).__init__(root,
+        super(iCIFAR10, self).__init__(root,
                                         train=train,
                                         transform=transform,
                                         target_transform=target_transform,
