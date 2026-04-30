@@ -12,7 +12,7 @@ import os
 for train_no in range(1,4):
     dataset='CIFAR10' #try other dataset
     numclass= 1      #num of classes learned initially, will be updated in incremental learning
-    feature_extractor=resnet18_cbam(numclasses = 10) #try other resnets
+    feature_extractor=resnet18_cbam(num_classes = 10) #try other resnets
     img_size=32
     batch_size=128  
     task_size= 1      #num of classes learned each task
