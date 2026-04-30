@@ -44,6 +44,8 @@ class iCaRLmodel:
         self.exemplar_set = []
         self.class_mean_set = []
         self.numclass = numclass
+        self.class_to_index = {}
+
 
         
         self.old_model = None #added to store the old model for distillation loss
@@ -173,6 +175,9 @@ class iCaRLmodel:
         task_end = self.numclass
         classes = self.class_order[task_start:task_end].tolist()  
 
+        for new_idx, orig_label in enumerate(self.class_order[:task_end]):
+            self.class_to_index[int(orig_label)] = new_idx
+
         self.train_loader,self.test_loader=self._get_train_and_test_dataloader(classes) #load data for current task
         if self.numclass>self.task_size:
             self.model.Incremental_learning(self.numclass)  #modify the output layer of the model to accommodate new classes
@@ -182,6 +187,14 @@ class iCaRLmodel:
     def _get_train_and_test_dataloader(self, classes):
         self.train_dataset.getTrainData(classes, self.exemplar_set)
         self.test_dataset.getTestData(classes)
+
+        self.train_dataset.TrainLabels = np.array([ 
+            self.class_to_index[l] if l in self.class_to_index else l for l in self.train_dataset.TrainLabels ])
+
+
+        self.test_dataset.TestLabels = np.array([ 
+            self.class_to_index[l] if l in self.class_to_index else l for l in self.test_dataset.TestLabels ])
+
         train_loader = DataLoader(dataset=self.train_dataset,
                                   shuffle=True,
                                   batch_size=self.batchsize)
