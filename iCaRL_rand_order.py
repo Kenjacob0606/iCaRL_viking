@@ -7,10 +7,10 @@ import numpy as np
 from torch.nn import functional as F
 from PIL import Image
 import torch.optim as optim
-from iMNIST import iMNIST
+from iMNIST_rand_ord import iMNIST
 from myNetwork import network
-from iCIFAR100 import iCIFAR100
-from iCIFAR10 import iCIFAR10
+from iCIFAR100_rand_ord import iCIFAR100
+from iCIFAR10_rand_ord import iCIFAR10
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt #new
 
