@@ -1,4 +1,3 @@
-import torch
 from torchvision.datasets import CIFAR100
 from torchvision.datasets import CIFAR10
 from torchvision.datasets import MNIST #hand written digits
@@ -10,7 +9,7 @@ import numpy as np
 from PIL import Image
 
 
-class iCIFAR10(CIFAR10):
+class iDataset(CIFAR10):
     def __init__(self, root,
                  train=True,
                  transform=None,
@@ -18,7 +17,7 @@ class iCIFAR10(CIFAR10):
                  test_transform=None,
                  target_test_transform=None,
                  download=False):
-        super(iCIFAR10, self).__init__(root,
+        super(iDataset, self).__init__(root,
                                         train=train,
                                         transform=transform,
                                         target_transform=target_transform,
@@ -31,9 +30,6 @@ class iCIFAR10(CIFAR10):
         # self.TestData = []
         self.TestData = None
         self.TestLabels = None
-
-        self.exemplar_size = 0 #new
-        # self.exemplar_transforms = [] #new
 
     def concatenate(self, datas, labels):
         con_data = datas[0]
@@ -59,16 +55,11 @@ class iCIFAR10(CIFAR10):
         print("the size of test label is %s" % str(self.TestLabels.shape))
 
     def getTrainData(self, classes, exemplar_set):
-        # self.exemplar_transforms = exemplar_transforms
+
         datas, labels = [], []
         if len(exemplar_set) != 0:
-            for exemplar in exemplar_set:
-                exemplar_np = [img.numpy() if isinstance(img, torch.Tensor) else img for img in exemplar]
-                # datas.append(np.array(exemplar_np))
-                datas.append(exemplar_np)
-            # datas = [exemplar for exemplar in exemplar_set]
+            datas = [exemplar for exemplar in exemplar_set]
             length = len(datas[0])
-            self.exemplar_size = length * len(exemplar_set) #new
             labels = [np.full((length), label)
                       for label in range(len(exemplar_set))]
 
@@ -85,9 +76,8 @@ class iCIFAR10(CIFAR10):
         img, target = Image.fromarray(
             self.TrainData[index]), self.TrainLabels[index]
 
-        if index >= self.exemplar_size: #new 
-            if self.transform:
-                img = self.transform(img)
+        if self.transform:
+            img = self.transform(img)
 
         if self.target_transform:
             target = self.target_transform(target)
