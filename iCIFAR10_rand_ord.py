@@ -1,3 +1,4 @@
+import torch
 from torchvision.datasets import CIFAR100
 from torchvision.datasets import CIFAR10
 from torchvision.datasets import MNIST #hand written digits
