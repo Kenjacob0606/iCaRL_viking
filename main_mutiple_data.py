@@ -1,4 +1,4 @@
-from iCaRL_multipledata import iCaRLmodel
+from iCaRL_mul_LATEST import iCaRLmodel
 from ResNet import resnet18_cbam
 from ResNet import resnet18_MNIST_cbam
 from ResNet import resnet34_cbam
