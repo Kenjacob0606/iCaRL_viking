@@ -160,7 +160,7 @@ class iCaRLmodel:
     # get incremental train data
     # incremental
         total_classes = 10 if self.dataset in ['MNIST', 'CIFAR10'] else 100
-        self.class_order = np.arrange(total_classes)
+        self.class_order = np.arange(total_classes)
         np.random.shuffle(self.class_order)
         print("class order:", self.class_order)
 
