@@ -9,7 +9,7 @@ import os
 
 #class=2_def_train2_MNIST
 
-for train_no in range(3,4):
+for train_no in range(1,3):
     dataset='CIFAR10' #try other dataset
     numclass= 1      #num of classes learned initially, will be updated in incremental learning
     feature_extractor=resnet18_cbam(num_classes = 10) #try other resnets
