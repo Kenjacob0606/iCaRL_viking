@@ -27,11 +27,10 @@ def get_one_hot(target,num_class):
 
 class iCaRLmodel:
 
-    def __init__(self,numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file, train_no, filenames, dataset_switched=False, dataset_offset=0):
+    def __init__(self,numclass,feature_extractor,batch_size,task_size,memory_size,epochs,learning_rate,dataset,file, train_no, filenames, dataset_offset=0):
 
         super(iCaRLmodel, self).__init__()
         # self.img_size=
-        self.dataset_switched = dataset_switched  #newly added
         self.dataset_offset = dataset_offset  #newly added
         self.train_no = train_no
         self.filenames = filenames
@@ -323,7 +322,7 @@ class iCaRLmodel:
         filename2 = f'{self.filenames}/model/model_class_mean_{self.task_num}_train={self.train_no}_{self.dataset}.pth'  #newly added
         # filename2 = f'model_states/model_class_mean_{self.task_num}.pth'  #newly added
         torch.save(self.model,filename)
-        # torch.save({'class_mean_set': self.class_mean_set,}, filename2)
+        torch.save({'class_mean_set': self.class_mean_set,}, filename2)
         if self.old_model is not None:      #CIFAR10
             self.old_model.cpu()
             del self.old_model
